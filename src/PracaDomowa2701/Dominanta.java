@@ -3,7 +3,7 @@ package PracaDomowa2701;
 public class Dominanta {
     public static void main(String[] args) {
 
-        int[] T = {-8, 1, -23, 2, 3, 4, 5, 6, 7, 7, 7, 7, 8, 1};  // tablica w ktorej szukamy dominanty
+        int[] T = {-8, 1, -23, 2, 1, 3, 4, 4, 4, 5, 6, 7, 8};  // tablica w ktorej szukamy dominanty
 
         // wyszukujemy wartosc min i max tablicy T
         int min = T[0];
@@ -25,15 +25,19 @@ public class Dominanta {
 
         // szukam wartosci max w tablicy L
         int szukamMax = L[0];
+        int index = 0;
         for (int i = 0; i < L.length; i++) {
-            if (L[i] > szukamMax)
+            if (L[i] > szukamMax) {
                 szukamMax = L[i];
+                index = i;
+            }
         }
 
-        //drukowanie wartosci powtarzajacej sie najczesciej w tablicy L czyli dominanty
-        for (int i = 0; i < L.length; i++) {
-            if (L[i] == szukamMax)
-                System.out.println(min + i);
-        }
+        // drukowanie wyniku
+        if (szukamMax > 1)
+            System.out.printf("Dominanta: %d, wystepuje %d razy", (min + index), szukamMax);
+        else
+            System.out.println("Zadna z wartosci nie powtarza sie");
+
     }
 }
